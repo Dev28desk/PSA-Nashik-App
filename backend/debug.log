@@ -1,0 +1,9 @@
+[Sun Jul  6 16:10:07 UTC 2025] DEBUG: Starting controller file update
+- Created clean controller version
+- Previous matching attempts failed due to formatting differences
+- New version includes explicit returns for void compatibility
+EOF >/workspace/parmanand-sports-academy/backend/debug.log
+[Sun Jul  6 16:10:07 UTC 2025] DEBUG: Starting controller file update
+- Created clean controller version
+- Previous matching attempts failed due to formatting differences
+- New version includes explicit returns for void compatibility
