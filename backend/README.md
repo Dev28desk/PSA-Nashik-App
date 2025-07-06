@@ -24,3 +24,17 @@ See `.env.example` for required configuration
 2. Start dev server: `npm run dev`
 3. Build production: `npm run build`
 
+### Testing
+```bash
+npm test
+```
+
+Test Environment Requirements:
+- Redis server running locally
+- `.env` file with test configurations
+
+Test Coverage:
+- OTP sending validation
+- OTP verification
+- Error cases
+
