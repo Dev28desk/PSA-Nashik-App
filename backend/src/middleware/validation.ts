@@ -7,10 +7,11 @@ export const validateSendOTP = (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   const { phone } = req.body as SendOTPRequest;
   if (!phone || phone.length < 10) {
-    return res.status(400).json({ error: 'Valid phone number required' });
+    res.status(400).json({ error: 'Valid phone number required' });
+    return;
   }
   next();
 };
@@ -19,10 +20,11 @@ export const validateVerifyOTP = (
   req: Request,
   res: Response, 
   next: NextFunction
-) => {
+): void => {
   const { phone, otp } = req.body as VerifyOTPRequest;
   if (!phone || !otp || otp.length !== 6) {
-    return res.status(400).json({ error: 'Phone and 6-digit OTP required' });
+    res.status(400).json({ error: 'Phone and 6-digit OTP required' });
+    return;
   }
   next();
 };

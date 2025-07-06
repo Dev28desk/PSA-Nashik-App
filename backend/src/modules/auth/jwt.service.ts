@@ -25,7 +25,7 @@ export const verifyJWT = (token: string): JwtPayload => {
 };
 
 export const blacklistToken = async (token: string, expiry: number): Promise<void> => {
-  await redisClient.set(`jwt:blacklist:${token}`, '1', 'EX', expiry);
+  await redisClient.set(`jwt:blacklist:${token}`, '1', { EX: expiry });
 };
 
 export const isTokenBlacklisted = async (token: string): Promise<boolean> => {

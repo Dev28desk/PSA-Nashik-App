@@ -7,7 +7,7 @@ const OTP_EXPIRY = 300; // 5 minutes in seconds
 
 export const generateOTP = async (phone: string): Promise<string> => {
   const otp = authenticator.generate(process.env.OTP_SECRET! + phone);
-  await redisClient.set(`otp:${phone}`, otp, 'EX', OTP_EXPIRY);
+  await redisClient.set(`otp:${phone}`, otp, { EX: OTP_EXPIRY });
   return otp;
 };
 
