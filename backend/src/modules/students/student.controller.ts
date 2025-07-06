@@ -43,7 +43,7 @@ export class StudentController {
       const { error } = studentIdSchema.validate(req.params);
       if (error) throw new Error(error.details[0].message);
 
-      const student = await this.repository.findOne(req.params.id);
+      const student = await this.repository.findOne({ where: { id: Number(req.params.id) } });
       student ? res.json(student) : res.status(404).end();
     } catch (error: unknown) {
       const errMsg = error instanceof Error ? error.message : 'Failed to fetch student';

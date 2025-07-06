@@ -1,32 +1,21 @@
-
-
-
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
-import { Sport } from '../sports/sport.entity';
+import { Sport } from './sport.entity';
 
-@Entity('students')
+@Entity()
 export class Student {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({ nullable: false })
+  @Column()
   name!: string;
 
-  @Column({ unique: true, nullable: false })
+  @Column({ unique: true })
   phone!: string;
 
-  @Column({ nullable: true })
-  photoUrl?: string;
-
-  @ManyToOne(() => Sport, (sport) => sport.students, { nullable: false })
-  @JoinColumn({ name: 'sport_id' })
+  @ManyToOne(() => Sport, { eager: true })
+  @JoinColumn({ name: 'sportId' })
   sport!: Sport;
 
-  @Column({ name: 'batch_id', nullable: false })
-  batchId!: number;
-
-  @Column({ type: 'date', name: 'joining_date' })
-  joiningDate!: Date;
+  @Column()
+  sportId!: number;
 }
-
-

@@ -1,7 +1,9 @@
+import { AuthService } from './auth.service';
+const controller = new AuthController(new AuthService());
 
 
 import { Router } from 'express';
-import { sendOTP, verifyOTP } from './auth.controller';
+import { AuthController } from './auth.controller';
 import { 
   validateSendOTP,
   validateVerifyOTP 
@@ -9,8 +11,14 @@ import {
 
 const router = Router();
 
-router.post('/send-otp', validateSendOTP, sendOTP);
-router.post('/verify-otp', validateVerifyOTP, verifyOTP);
 
 export default router;
 
+
+router.post('/send-otp', validateSendOTP, (req, res, next) => 
+  controller.sendOTP(req.body, res)
+);
+
+router.post('/verify-otp', validateVerifyOTP, (req, res, next) => 
+  controller.verifyOTP(req.body, res)
+);

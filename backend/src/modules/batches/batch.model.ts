@@ -7,22 +7,22 @@ import { Attendance } from '../attendance/attendance.model';
 @Entity()
 export class Batch {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  sportId: number;
+  sportId!: number;
 
   @Column()
-  schedule: string; // e.g., "Mon/Wed/Fri 4-5PM"
+  schedule!: string; // e.g., "Mon/Wed/Fri 4-5PM"
 
   @Column({ type: 'date' })
-  startDate: Date;
+  startDate!: Date;
 
   @OneToMany(() => Attendance, attendance => attendance.batch)
-  attendances: Attendance[];
+  attendances!: Attendance[];
 }
 
 

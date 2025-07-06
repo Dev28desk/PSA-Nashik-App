@@ -1,10 +1,11 @@
+import { AppDataSource } from "../../data-source";
 
 
 import { Router } from 'express';
 import { StudentController } from './student.controller';
 
 const router = Router();
-const controller = new StudentController();
+const controller = new StudentController(AppDataSource);
 
 // Student CRUD endpoints
 router.post('/', controller.createStudent);

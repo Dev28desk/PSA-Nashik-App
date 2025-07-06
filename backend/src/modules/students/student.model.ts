@@ -7,28 +7,28 @@ import { Attendance } from '../attendance/attendance.model';
 @Entity()
 export class Student {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  phone: string;
+  phone!: string;
 
   @Column({ nullable: true })
-  photoUrl: string;
+  photoUrl?: string;
 
   @Column()
-  sportId: number;
+  sportId!: number;
 
   @Column()
-  batchId: number;
+  batchId!: number;
 
   @Column({ type: 'date' })
-  joiningDate: Date;
+  joiningDate!: Date;
 
   @OneToMany(() => Attendance, attendance => attendance.student)
-  attendances: Attendance[];
+  attendances!: Attendance[];
 }
 
 

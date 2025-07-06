@@ -15,5 +15,8 @@
     "ts-node": "^10.9.2",
     "typeorm": "^0.3.25",
     "typescript": "^5.8.3"
+  },
+  "scripts": {
+    "typeorm:run": "cd backend && typeorm-ts-node-commonjs migration:run -d src/data-source.ts"
   }
 }

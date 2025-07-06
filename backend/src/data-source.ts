@@ -3,10 +3,11 @@
 
 import 'dotenv/config';
 import { DataSource } from 'typeorm';
-import { Student } from '@modules/students/student.model';
-import { Batch } from '@modules/batches/batch.model';
-import { User } from '@modules/users/user.model';
-import { Attendance } from '@modules/attendance/attendance.model';
+import { Student } from '/workspace/parmanand-sports-academy/backend/src/modules/students/student.model';
+import { Batch } from '/workspace/parmanand-sports-academy/backend/src/modules/batches/batch.model';
+import { User } from '/workspace/parmanand-sports-academy/backend/src/modules/users/user.model';
+import { Attendance } from '/workspace/parmanand-sports-academy/backend/src/modules/attendance/attendance.model';
+import { FeeStructure } from '/workspace/parmanand-sports-academy/backend/src/modules/fees/fees.model';
 
 // Validate required environment variables
 const dbPort = parseInt(process.env.DB_PORT || '5432');
@@ -21,7 +22,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME || 'sports_academy',
   synchronize: false,
   logging: true,
-  entities: [Student, Batch, User, Attendance],
+  entities: [Student, Batch, User, Attendance, FeeStructure],
   migrations: ['src/migrations/*.ts'],
   subscribers: [],
 });
