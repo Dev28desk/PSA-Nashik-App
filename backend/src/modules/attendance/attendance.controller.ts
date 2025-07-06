@@ -1,9 +1,14 @@
 import { InjectRepository } from '@nestjs/typeorm';
+import { AttendanceReports } from "./attendance.reports";
 import { Request, Response, NextFunction } from 'express';
+import { AttendanceReports } from "./attendance.reports";
 import { Attendance } from './attendance.entity';
+import { AttendanceReports } from "./attendance.reports";
 import { Repository } from 'typeorm';
+import { AttendanceReports } from "./attendance.reports";
 
 export class AttendanceController {
+  private reports = new AttendanceReports();
   constructor(@InjectRepository(Attendance) private repository: Repository<Attendance>) {}
 
   async markAttendance(req: Request, res: Response, next: NextFunction): Promise<void> {
