@@ -5,6 +5,7 @@ import { connectRedis } from './services/redis';
 import { initializeDatabase } from './config/database';
 import authRouter from './modules/auth/auth.routes';
 import { studentRouter } from './modules/students/student.routes';
+import paymentRouter from './payments/payment.routes';
 
 dotenv.config();
 const app = express();
@@ -27,6 +28,7 @@ async function startServer() {
 
     app.use('/api/auth', authRouter);
     app.use('/api/students', studentRouter);
+    app.use('/api/payments', paymentRouter);
 
     // Error handling
     app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

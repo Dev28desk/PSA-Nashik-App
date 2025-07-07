@@ -1,0 +1,23 @@
+
+
+
+:root {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.dashboard {
+  padding: 2rem;
+}
+
+h1 {
+  color: #1a365d;
+  margin-bottom: 2rem;
+}
+
+.loading {
+  color: #4a5568;
+  font-style: italic;
+}
+
+
