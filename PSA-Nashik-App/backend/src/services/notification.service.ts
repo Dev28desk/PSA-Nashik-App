@@ -8,9 +8,18 @@ interface WhatsAppMessage {
   variables?: Record<string, string>;
 }
 
+/**
+ * Handles all notification delivery mechanisms
+ */
 export class NotificationService {
   private static whatsappEnabled = config.whatsapp.enabled;
 
+  /**
+   * Sends a WhatsApp notification using template messages
+   * @param message - Contains phone, template name and optional variables
+   * @returns Promise resolving to true if sent successfully, false otherwise
+   * @throws Logs errors to console but doesn't throw externally
+   */
   static async sendWhatsApp(message: WhatsAppMessage): Promise<boolean> {
     if (!this.whatsappEnabled) return false;
 
