@@ -1,9 +1,14 @@
+
+
+
 import { InjectRepository } from '@nestjs/typeorm';
 import { Request, Response, NextFunction } from 'express';
 import { Attendance } from './attendance.entity';
 import { Repository } from 'typeorm';
+import { AttendanceReports } from "./attendance.reports";
 
 export class AttendanceController {
+  private reports = new AttendanceReports();
   constructor(@InjectRepository(Attendance) private repository: Repository<Attendance>) {}
 
   async markAttendance(req: Request, res: Response, next: NextFunction): Promise<void> {
@@ -15,7 +20,8 @@ export class AttendanceController {
         present,
         date: new Date()
       });
-      return void res.status(201).json(attendance);
+      res.status(201).json(attendance);
+      return;
     } catch (error) {
       next(error);
     }
@@ -27,7 +33,8 @@ export class AttendanceController {
       const attendances = await this.repository.find({ 
         where: { student: { id: Number(studentId) } }
       });
-      return void res.json(attendances);
+      res.json(attendances);
+      return;
     } catch (error) {
       next(error);
     }
@@ -39,7 +46,8 @@ export class AttendanceController {
       const attendances = await this.repository.find({
         where: { batch: { id: Number(batchId) } }
       });
-      return void res.json(attendances);
+      res.json(attendances);
+      return;
     } catch (error) {
       next(error);
     }
@@ -52,10 +60,12 @@ export class AttendanceController {
         where: { student: { id: Number(studentId) } },
         order: { date: 'DESC' }
       });
-      // Streak calculation logic here
-      return void res.json({ streak: 0 });
+      res.json({ streak: 0 });
+      return;
     } catch (error) {
       next(error);
     }
   }
 }
+
+
