@@ -3,7 +3,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { setupStudentSwagger } from './docs/students.swagger';
-import { setupNotificationSwagger } from './docs/notifications.swagger';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
@@ -18,7 +17,6 @@ async function bootstrap() {
 
   // Swagger documentation
   setupStudentSwagger(app);
-  setupNotificationSwagger(app);
 
   // Enable CORS for development
   app.enableCors();

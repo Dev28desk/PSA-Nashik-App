@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 import { View, Text, Button, Alert } from 'react-native';
-import axios from 'axios';
-import { API_BASE_URL } from '../../config';
 import RazorpayCheckout from 'react-native-razorpay';
 
 export default function PaymentScreen({ route }) {
@@ -28,17 +26,7 @@ export default function PaymentScreen({ route }) {
 
       const data = await RazorpayCheckout.open(options);
       Alert.alert('Payment Successful', `Payment ID: ${data.razorpay_payment_id}`);
-      
-// Verify payment with backend
-await axios.post(`${API_BASE_URL}/payments/verify`, {
-  paymentId: data.razorpay_payment_id,
-  orderId: data.razorpay_order_id
-});
-// Update local state or navigation
-navigation.navigate('PaymentSuccess', { 
-  paymentId: data.razorpay_payment_id 
-});
-
+      // TODO: Call backend to verify payment
     } catch (error) {
       Alert.alert('Payment Failed', error.description || 'Payment could not be completed');
     } finally {

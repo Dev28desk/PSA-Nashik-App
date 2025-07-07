@@ -9,7 +9,7 @@ import paymentRouter from './payments/payment.routes';
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 51801;
+const PORT = process.env.PORT || 3000;
 
 async function startServer() {
   try {
